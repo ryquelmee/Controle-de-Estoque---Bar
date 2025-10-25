@@ -54,7 +54,7 @@ Como é um protótipo, o projeto é executado diretamente pelo terminal. Não h�
     ```bash
     python main.py
     ```
-    *(**Nota:** Substitua `main.py` pelo nome real do seu arquivo de entrada, como `app.py` ou `run.py`).*
+    
 
 ## 👥 Autores
 
