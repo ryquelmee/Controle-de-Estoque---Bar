@@ -119,13 +119,14 @@ def menu_configurar():
             if not nome_espaco.strip():
                 print("Nome inválido!")
             else:
-                estoque.remover_espaco(nome_espaco)
+               print(estoque.remover_espaco(nome_espaco))
+
         elif acao == '4':
             nome_espaco = input("Digite o nome do espaço a ser buscado: ")
             if not nome_espaco.strip():
                 print("Nome inválido!")
             else:
-                estoque.buscar_espaco(nome_espaco, True)
+                estoque.buscar_espaco(nome_espaco, buscar=True)
         elif acao == '5':
             return
         

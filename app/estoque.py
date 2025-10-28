@@ -43,31 +43,53 @@ class Estoque:
                         break
 
     
-    def buscar_espaco(self, nome, buscar=False):
+    def buscar_espaco(self, nome, buscar=False, buscar_com_caminho=False):
         fila = []
         espacos_com_nome_buscado = []
         fila = deque([self.raiz])
-        while fila:
-            espaco_atual = fila.popleft()
-            if espaco_atual.nome == nome:
-                espacos_com_nome_buscado.append(espaco_atual)
-            for subespaco in espaco_atual.subespacos:
-                fila.append(subespaco)
+            
+        if buscar_com_caminho:
+            espaco_atual = self.raiz
 
-        if buscar:
-            for espaco in espacos_com_nome_buscado:
-                print(espaco.caminho)
-            return
+            for espaco in nome:
+                for subespaco_atual in espaco_atual.subespacos:
+                    if subespaco_atual.nome == espaco:
+                        espaco_atual = subespaco_atual
+                        break
+            
+            return espaco_atual
+        else:
+            while fila:
+                espaco_atual = fila.popleft()
+                if espaco_atual.nome == nome:
+                    espacos_com_nome_buscado.append(espaco_atual)
+                for subespaco in espaco_atual.subespacos:
+                    fila.append(subespaco)
 
-        else: 
-            return espacos_com_nome_buscado
+            if buscar:
+                for espaco in espacos_com_nome_buscado:
+                    print(espaco.caminho)
+                return
+
+            else: 
+                return espacos_com_nome_buscado
 
     def remover_espaco(self, nome):
         espacos_com_nome_buscado = self.buscar_espaco(nome)
+        if not espacos_com_nome_buscado:
+            print("Espaço não encontrado!")
+            return
         espaco_escolhido = questionary.select("Selecione o espaço a remover: ", choices=[espaco.caminho for espaco in espacos_com_nome_buscado]).ask()
-        espaco_escolhido.split("/")
-        print(espaco_escolhido)
-        return
+        nome_do_caminho_a_remover = espaco_escolhido.split("/")[-1]
+        espaco_escolhido = espaco_escolhido.split("/")[:-1]
+
+        espaco_pai_do_escolhido = self.buscar_espaco(espaco_escolhido, buscar_com_caminho=True)
+        
+        for subespaco in espaco_pai_do_escolhido.subespacos:
+            if subespaco.nome == nome_do_caminho_a_remover:
+                espaco_pai_do_escolhido.subespacos.remove(subespaco)
+                break
+        return f"Espaço {nome_do_caminho_a_remover} removido com sucesso"
 
 
 
