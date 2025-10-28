@@ -115,9 +115,17 @@ def menu_configurar():
         elif acao == '2':
             pass
         elif acao == '3':
-            pass
+            nome_espaco = input("Digite o nome do espaço a ser removido: ")
+            if not nome_espaco.strip():
+                print("Nome inválido!")
+            else:
+                estoque.remover_espaco(nome_espaco)
         elif acao == '4':
-            pass
+            nome_espaco = input("Digite o nome do espaço a ser buscado: ")
+            if not nome_espaco.strip():
+                print("Nome inválido!")
+            else:
+                estoque.buscar_espaco(nome_espaco, True)
         elif acao == '5':
             return
         

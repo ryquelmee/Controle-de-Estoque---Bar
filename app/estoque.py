@@ -13,18 +13,17 @@ class Estoque:
         self.raiz = raiz
 
     def percorrer_estoque(self):
+        fila = []
         fila = deque([self.raiz])
-
         while fila:
             espaco_atual = fila.popleft()
-
             print(espaco_atual.caminho)
-
             for subespaco in espaco_atual.subespacos:
                 fila.append(subespaco)
 
 
     def adicionar_espaco(self, nome):
+        fila = []
         fila = deque([self.raiz])
         while fila:
             
@@ -42,5 +41,35 @@ class Estoque:
                         fila.append(subespaco)
                         caminho = subespaco.caminho
                         break
+
+    
+    def buscar_espaco(self, nome, buscar=False):
+        fila = []
+        espacos_com_nome_buscado = []
+        fila = deque([self.raiz])
+        while fila:
+            espaco_atual = fila.popleft()
+            if espaco_atual.nome == nome:
+                espacos_com_nome_buscado.append(espaco_atual)
+            for subespaco in espaco_atual.subespacos:
+                fila.append(subespaco)
+
+        if buscar:
+            for espaco in espacos_com_nome_buscado:
+                print(espaco.caminho)
+            return
+
+        else: 
+            return espacos_com_nome_buscado
+
+    def remover_espaco(self, nome):
+        espacos_com_nome_buscado = self.buscar_espaco(nome)
+        espaco_escolhido = questionary.select("Selecione o espaço a remover: ", choices=[espaco.caminho for espaco in espacos_com_nome_buscado]).ask()
+        espaco_escolhido.split("/")
+        print(espaco_escolhido)
+        return
+
+
+
 estoque = Estoque(Espaco("Raiz", ""))
         
