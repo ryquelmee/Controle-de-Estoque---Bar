@@ -46,8 +46,7 @@ Como é um protótipo, o projeto é executado diretamente pelo terminal. Não h�
 
 1.  Clone o repositório:
     ```bash
-    git clone [https://github.com/SEU-USUARIO/StockCenter.git](https://github.com/SEU-USUARIO/StockCenter.git)
-    cd StockCenter
+    git clone https://github.com/ryquelmee/Controle-de-Estoque---Bar.git
     ```
 
 2.  Execute o arquivo principal:
