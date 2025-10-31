@@ -113,7 +113,11 @@ def menu_configurar():
                 estoque.adicionar_espaco(nome_espaco)
 
         elif acao == '2':
-            pass
+            nome_espaco = input("Digite o nome do espaço a ser buscado: ")
+            if not nome_espaco.strip():
+                print("Nome inválido!")
+            else:
+                estoque.editar_espaco(nome_espaco)
         elif acao == '3':
             nome_espaco = input("Digite o nome do espaço a ser removido: ")
             if not nome_espaco.strip():

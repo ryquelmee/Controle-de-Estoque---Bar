@@ -1,11 +1,23 @@
 from collections import deque
 import questionary
 
+
+
+
 class Espaco:
     def __init__(self, nome, caminho = None):
         self.nome = nome
         self.caminho = caminho
         self.subespacos = []
+
+class Produto:
+    def __init__(self, nome, vc, vv, validade, caminho = None):
+        self.codigo = None
+        self.nome = nome
+        self.validade = validade
+        self.pc = vc
+        self.pv = vv
+        self.caminho = caminho
 
 
 class Estoque:
@@ -91,6 +103,32 @@ class Estoque:
                 break
         return f"Espaço {nome_do_caminho_a_remover} removido com sucesso"
 
+    
+    def editar_espaco(self, nome):
+        espacos_com_nome_buscado = self.buscar_espaco(nome)
+        if not espacos_com_nome_buscado:
+            print("Espaço não encontrado!")
+            return
+        espaco_escolhido = questionary.select("Selecione o espaço a editar: ", choices=[espaco.caminho for espaco in espacos_com_nome_buscado]).ask()
+        nome_do_caminho_a_editar = espaco_escolhido.split("/")[-1]
+        espaco_escolhido = espaco_escolhido.split("/")[:-1]
+
+        espaco_pai_do_escolhido = self.buscar_espaco(espaco_escolhido, buscar_com_caminho=True)
+
+        for subespaco in espaco_pai_do_escolhido.subespacos:
+            if subespaco.nome == nome_do_caminho_a_editar:
+                novo_nome = ""
+                while not novo_nome:
+                    novo_nome = str(input("Digíte o novo nome do espaço(não pode ser vazio!): "))
+                subespaco.nome = novo_nome
+                caminho_antigo = subespaco.caminho.split("/")[:-1]
+                subespaco.caminho = ""
+                for espaco in caminho_antigo:
+                    subespaco.caminho += f"{espaco}/"
+                
+                subespaco.caminho += f"{novo_nome}"
+                break
+        print("Espaço editado com sucesso!")
 
 
 estoque = Estoque(Espaco("Raiz", ""))
