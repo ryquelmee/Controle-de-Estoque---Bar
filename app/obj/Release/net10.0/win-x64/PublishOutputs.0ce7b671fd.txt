@@ -1,0 +1,2 @@
+C:\Users\lucas\Downloads\projeto_engenharia_feito\projeto_engenharia_feito\projeto_engenharia\bin\Release\net10.0\win-x64\publish\projeto_engenharia.pdb
+C:\Users\lucas\Downloads\projeto_engenharia_feito\projeto_engenharia_feito\projeto_engenharia\bin\Release\net10.0\win-x64\publish\projeto_engenharia.exe
