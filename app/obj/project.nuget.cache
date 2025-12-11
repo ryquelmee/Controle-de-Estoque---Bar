@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "piw/gQwUbKg=",
+  "dgSpecHash": "hyLyc0aManQ=",
   "success": true,
-  "projectFilePath": "C:\\Users\\lucas\\Downloads\\projeto_engenharia_feito\\projeto_engenharia_feito\\projeto_engenharia\\projeto_engenharia.csproj",
+  "projectFilePath": "C:\\Users\\lucas\\Documents\\projeto_engenharia\\Controle-de-Estoque---Bar\\app\\projeto_engenharia.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\lucas\\.nuget\\packages\\spectre.console\\0.54.0\\spectre.console.0.54.0.nupkg.sha512"
   ],
